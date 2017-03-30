@@ -16,7 +16,10 @@ fn main() {
     for dir in dirs_to_check {
         let pyfiles = get_py_files(dir);
         for file in &pyfiles {
-            println!("{}", check_ios(&correct_path(&format!("{}/{}", dir, file))).join("\n"));
+            let log = check_ios(&correct_path(&format!("{}", file)));
+            if log.len() > 0 {
+                println!("{}", log.join("\n"));
+            }
         }
     }
 
